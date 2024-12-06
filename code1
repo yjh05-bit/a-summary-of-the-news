@@ -1,0 +1,18 @@
+import requests
+from bs4 import BeautifulSoup
+from transformers import pipeline
+
+# 뉴스 기사 본문 스크래핑 함수
+def scrape_article(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # 본문 추출 (웹사이트 구조에 따라 변경 필요)
+        paragraphs = soup.find_all('p')
+        content = ' '.join([p.get_text() for p in paragraphs])
+        return content
+    except Exception as e:
+        print(f"Error while fetching the article: {e}")
+        return None

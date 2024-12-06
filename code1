@@ -1,3 +1,4 @@
+```python
 import requests
 from bs4 import BeautifulSoup
 from transformers import pipeline
@@ -15,4 +16,4 @@ def scrape_article(url):
         return content
     except Exception as e:
         print(f"Error while fetching the article: {e}")
-        return None
+        return None```
